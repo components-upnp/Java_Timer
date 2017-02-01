@@ -15,7 +15,6 @@ package com.irit;
  * @author rahamamane
  */
 public class Chronometre extends javax.swing.JFrame {
-
     public enum Etat {
         INIT, SUB
     };

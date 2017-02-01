@@ -17,7 +17,6 @@ package com.irit;
  * @author creative Technology
  *
  */
-
 public class ChronoServer implements Runnable {
     /**
      * Main

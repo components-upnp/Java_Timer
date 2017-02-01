@@ -59,7 +59,6 @@ public class ChronoService {
         // [FACULTATIF] je garde la l'ancienne valeur pour emmettre l'evenenment
         boolean targetOldValue = target;
         target = newTargetValue;
-
         /*
          * ...
          * Ici on imagine un algorithme qui vérifie que la lampe a bien changé d'état
