@@ -64,7 +64,6 @@ public class ChronoService {
          * Ici on imagine un algorithme qui vérifie que la lampe a bien changé d'état
          * ...
          */
-
         boolean statusOldValue = status;
         status = newTargetValue;
 

@@ -103,6 +103,7 @@ public class Chronometre extends javax.swing.JFrame {
                                 .addComponent(textCompteur, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(262, Short.MAX_VALUE))
         );
+
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
