@@ -7,19 +7,55 @@ package com.irit;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeSupport;
 import javax.swing.JButton;
 import javax.swing.Timer;
+
+import org.fourthline.cling.binding.annotations.UpnpAction;
+import org.fourthline.cling.binding.annotations.UpnpInputArgument;
+import org.fourthline.cling.binding.annotations.UpnpStateVariable;
 import org.fourthline.cling.model.meta.LocalService;
 
 /**
  *
- * @author Abdourahamane
+ * @author Abdourahamane Ly
  */
 public final class Chronometres extends javax.swing.JFrame {
 
     private static int heure, minute, seconde;
     private final int delais = 1000;
     private static LocalService<ChronoService> chronometreService;
+
+    //emettre un evenement après un temps donné
+    @UpnpStateVariable(defaultValue = "event", sendEvents = false)
+    private boolean target = false;
+
+    @UpnpStateVariable(defaultValue = "start")
+    private boolean status = false;
+
+    @UpnpAction
+    public void setEvent(@UpnpInputArgument(name = "NewTargetValue") boolean newTargetValue) {
+        boolean targetOldValue = target;
+        target = newTargetValue;
+
+        boolean statusOldValue = status;
+        status = newTargetValue;
+        getPropertyChangeSupport().firePropertyChange("Event", statusOldValue, status);
+        getPropertyChangeSupport().firePropertyChange("Event", statusOldValue, status);
+    }
+    private final PropertyChangeSupport propertyChangeSupport;
+    public ChronoService() {
+        this.propertyChangeSupport = new PropertyChangeSupport(this);
+    }
+    //fin de l'emission
+
+    /**
+     * Get propertyChangeSupport
+     * @return PropertyChangeSupport
+     */
+    public PropertyChangeSupport getPropertyChangeSupport() {
+        return propertyChangeSupport;
+    }
 
     public void activate(JButton... boutons) {
         for (JButton bout : boutons) {
@@ -89,12 +125,12 @@ public final class Chronometres extends javax.swing.JFrame {
         labelHeure = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Chronomètre");
+        setTitle("Chronometre");
         setAlwaysOnTop(true);
         setName("chronometre"); // NOI18N
 
         boutonRemiseAZero.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        boutonRemiseAZero.setText("Remise à zero");
+        boutonRemiseAZero.setText("Remise a zero");
         boutonRemiseAZero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boutonRemiseAZeroActionPerformed(evt);

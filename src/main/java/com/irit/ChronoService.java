@@ -88,7 +88,7 @@ public class ChronoService {
     }
 
     /**
-     * Get Status of the lamp
+     * Get Status du chronomètre
      * Methode Upnp grace au systéme d'annotation
      * @return boolean
      */
@@ -107,7 +107,7 @@ public class ChronoService {
         System.out.println("Version : 1.1");
     }
 
-    public void lancer() {
-
-    }
+    /**
+     * Permet d'envoyer un evenement après un temps donné
+     */
 }

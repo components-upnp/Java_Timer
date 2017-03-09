@@ -100,7 +100,7 @@ public class ChronoServer implements Runnable {
                 new DefaultServiceManager(chrnoService, ChronoService.class)
         );
 
-        new Chronometre(chrnoService).setVisible(true);
+        new Chronometres(chrnoService).setVisible(true);
 
         // retour en cas de 1 service
         return new LocalDevice(identity, type, details, chrnoService);
