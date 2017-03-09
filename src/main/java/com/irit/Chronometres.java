@@ -7,6 +7,8 @@ package com.irit;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import javax.swing.JButton;
 import javax.swing.Timer;
@@ -57,6 +59,12 @@ public final class Chronometres extends javax.swing.JFrame {
         activate(boutonStart);
         deactivate(boutonRemiseAZero);
         this.chronometreService = chronoService;
+        this.chronometreService.getManager().getImplementation().getPropertyChangeSupport().addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                //TODO
+            }
+        });
     }
 
     public void afficherChrono() {
