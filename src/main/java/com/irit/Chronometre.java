@@ -60,7 +60,7 @@ public class Chronometre extends javax.swing.JFrame {
     public void initChronometre(LocalService<ChronoService> chronoService) {
         etat = Etat.INIT;
         this.setTitle("Chronometre");
-        this.compteur = 20;
+        this.compteur = 10;
         this.switchPowerService = chronoService;
     }
 
@@ -87,7 +87,7 @@ public class Chronometre extends javax.swing.JFrame {
 
         textCompteur.setFont(new java.awt.Font("Ubuntu", 1, 31)); // NOI18N
         textCompteur.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textCompteur.setText("10");
+        textCompteur.setText("60");
         textCompteur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textCompteurActionPerformed(evt);
@@ -97,27 +97,26 @@ public class Chronometre extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(237, 237, 237)
-                                .addComponent(textCompteur, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(262, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(103, 103, 103)
+                .addComponent(textCompteur, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(105, Short.MAX_VALUE))
         );
-
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(83, 83, 83)
-                                .addComponent(textCompteur, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(95, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(61, Short.MAX_VALUE)
+                .addComponent(textCompteur, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textCompteurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textCompteurActionPerformed
+    private void textCompteurActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
-    }//GEN-LAST:event_textCompteurActionPerformedss
+    }                                              
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField textCompteur;
