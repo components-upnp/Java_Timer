@@ -73,22 +73,22 @@ public class ChronoServer implements Runnable {
          */
         DeviceIdentity identity =
                 new DeviceIdentity(
-                        UDN.uniqueSystemIdentifier("Button")
+                        UDN.uniqueSystemIdentifier("ChronoService")
                 );
 
         DeviceType type =
-                new UDADeviceType("Button", 1);
+                new UDADeviceType("TypeChrono", 1);
 
         DeviceDetails details =
                 new DeviceDetails(
-                        "Chronometre",					// Friendly Name
+                        "Friendly ChronoService",					// Friendly Name
                         new ManufacturerDetails(
                                 "CreaTech",								// Manufacturer
                                 ""),								// Manufacturer URL
                         new ModelDetails(
-                                "ButtonTest",						// Model Name
-                                "A basic button.",	// Model Description
-                                "v1" 								// Model Number
+                                "ChronoServiceTest",						// Model Name
+                                "Un composant qui permet de lancer, arreter et reinitialise un chronometre",	// Model Description
+                                "v2" 								// Model Number
                         )
                 );
 

@@ -16,21 +16,21 @@ import java.beans.PropertyChangeSupport;
 
 @UpnpService(
         serviceId = @UpnpServiceId("ChronoService"),								// Identifiant Unique
-        serviceType = @UpnpServiceType(value = "ChronoService", version = 1)		// Définition de la version
+        serviceType = @UpnpServiceType(value = "ChronoService", version = 2)		// Définition de la version
 )
 public class ChronoService {
     /**
      * Variable D'Etat, non évenemencée
-     * Permet d'envoyer le message de l'état dans lequel la lampe doit étre
+     * Permet d'envoyer le message de l'état dans lequel le chronomètre doit étre
      */
-    @UpnpStateVariable(defaultValue = "0", sendEvents = false)
+    @UpnpStateVariable(defaultValue = "start", sendEvents = false)
     private boolean target = false;
 
     /**
      * Variable d'etat évenemmencée
      * Permet de vrifier si le chrono est en marche ou arreté
      */
-    @UpnpStateVariable(defaultValue = "0")
+    @UpnpStateVariable(defaultValue = "start")
     private boolean status = false;
 
     /**
@@ -50,7 +50,7 @@ public class ChronoService {
     }
 
     /**
-     * Permet d'envoyer un message de changement d'etat de la lampe
+     * Permet d'envoyer un message de changement du chronomètre
      * @param newTargetValue
      */
     @UpnpAction
@@ -59,11 +59,7 @@ public class ChronoService {
         // [FACULTATIF] je garde la l'ancienne valeur pour emmettre l'evenenment
         boolean targetOldValue = target;
         target = newTargetValue;
-        /*
-         * ...
-         * Ici on imagine un algorithme qui vérifie que la lampe a bien changé d'état
-         * ...
-         */
+
         boolean statusOldValue = status;
         status = newTargetValue;
 
@@ -71,7 +67,7 @@ public class ChronoService {
         // COMMENCE PAR UNE MAJUSCULE. Ici "Status" pour la varialbe status
         getPropertyChangeSupport().firePropertyChange("Status", statusOldValue, status);
 
-        System.err.println("FIRE");
+       // System.err.println("FIRE");
         // Fonctionne aussi :
         // getPropertyChangeSupport().firePropertyChange("Status", null null);
 
@@ -108,7 +104,7 @@ public class ChronoService {
      * Ceci n'est pas une methode UPnP
      */
     public void printVersion(){
-        System.out.println("Version : 1.0");
+        System.out.println("Version : 1.1");
     }
 
     public void lancer() {

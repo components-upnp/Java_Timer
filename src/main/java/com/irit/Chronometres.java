@@ -19,7 +19,7 @@ public final class Chronometres extends javax.swing.JFrame {
 
     private static int heure, minute, seconde;
     private final int delais = 1000;
-    private static LocalService<ChronoService> switchPowerService;
+    private static LocalService<ChronoService> chronometreService;
 
     public void activate(JButton... boutons) {
         for (JButton bout : boutons) {
@@ -39,18 +39,18 @@ public final class Chronometres extends javax.swing.JFrame {
 
     /**
      * Creates new form Chronometres
-     * @param switchPowerService
+     * @param chronometreService
      */
-    public Chronometres(LocalService<ChronoService> switchPowerService) {
+    public Chronometres(LocalService<ChronoService> chronometreService) {
         initComponents();
-        initChronometre(switchPowerService);
+        initChronometre(chronometreService);
     }
 
     public void initChronometre(LocalService<ChronoService> chronoService) {
         heure = minute = seconde = 0;
         activate(boutonStart);
         deactivate(boutonRemiseAZero);
-        this.switchPowerService = chronoService;
+        this.chronometreService = chronoService;
     }
 
     public void afficherChrono() {
@@ -68,7 +68,7 @@ public final class Chronometres extends javax.swing.JFrame {
                 heure++;
             } 
             if(heure  == 24){
-                initChronometre(switchPowerService);//reinitialisation du chronometre
+                initChronometre(chronometreService);//reinitialisation du chronometre
             }
             //il faudra gerer quand atteind 24h
             afficherChrono();
@@ -161,7 +161,7 @@ public final class Chronometres extends javax.swing.JFrame {
     private void boutonRemiseAZeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonRemiseAZeroActionPerformed
         if (boutonStart.getText().compareTo("Start") == 0) {
             boutonStart.setText("Start");
-            initChronometre(switchPowerService);
+            initChronometre(chronometreService);
             activate(boutonStart);
             deactivate(boutonRemiseAZero);
             afficherChronometre();
@@ -198,7 +198,7 @@ public final class Chronometres extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               new Chronometres(switchPowerService).setVisible(true);
+               new Chronometres(chronometreService).setVisible(true);
             }
         });
     }
