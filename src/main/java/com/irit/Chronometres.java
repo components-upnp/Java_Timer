@@ -26,38 +26,7 @@ public final class Chronometres extends javax.swing.JFrame {
     private final int delais = 1000;
     private static LocalService<ChronoService> chronometreService;
 
-    //emettre un evenement après un temps donné
-   /* @UpnpStateVariable(defaultValue = "event", sendEvents = false)
-    private boolean target = false;
-
-    @UpnpStateVariable(defaultValue = "start")
-    private boolean status = false;
-
-    @UpnpAction
-    public void setEvent(@UpnpInputArgument(name = "NewTargetValue") boolean newTargetValue) {
-        boolean targetOldValue = target;
-        target = newTargetValue;
-
-        boolean statusOldValue = status;
-        status = newTargetValue;
-        getPropertyChangeSupport().firePropertyChange("Event", statusOldValue, status);
-        getPropertyChangeSupport().firePropertyChange("Event", statusOldValue, status);
-    }
-    private final PropertyChangeSupport propertyChangeSupport;
-    public ChronoService() {
-        this.propertyChangeSupport = new PropertyChangeSupport(this);
-    }*/
-    //fin de l'emission
-
-    /**
-     * Get propertyChangeSupport
-     * @return PropertyChangeSupport
-     */
-   /* public PropertyChangeSupport getPropertyChangeSupport() {
-        return propertyChangeSupport;
-    }*/
-
-    public void activate(JButton... boutons) {
+      public void activate(JButton... boutons) {
         for (JButton bout : boutons) {
             bout.setEnabled(true);
         }
@@ -81,6 +50,7 @@ public final class Chronometres extends javax.swing.JFrame {
         initComponents();
         initChronometre(chronometreService);
     }
+    
 
     public void initChronometre(LocalService<ChronoService> chronoService) {
         heure = minute = seconde = 0;
@@ -102,7 +72,7 @@ public final class Chronometres extends javax.swing.JFrame {
             if (minute == 60) {
                 minute = 0;
                 heure++;
-            } 
+            }
             if(heure  == 24){
                 initChronometre(chronometreService);//reinitialisation du chronometre
             }
@@ -211,7 +181,7 @@ public final class Chronometres extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

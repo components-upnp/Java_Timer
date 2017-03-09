@@ -3,14 +3,14 @@ package com.irit;
 /**
  * Created by Abdourahamane Ly on 01/02/2017.
  */
-        import org.fourthline.cling.UpnpService;
-        import org.fourthline.cling.UpnpServiceImpl;
-        import org.fourthline.cling.binding.*;
-        import org.fourthline.cling.binding.annotations.*;
-        import org.fourthline.cling.model.*;
-        import org.fourthline.cling.model.meta.*;
-        import org.fourthline.cling.model.types.*;
-        import java.io.IOException;
+import org.fourthline.cling.UpnpService;
+import org.fourthline.cling.UpnpServiceImpl;
+import org.fourthline.cling.binding.*;
+import org.fourthline.cling.binding.annotations.*;
+import org.fourthline.cling.model.*;
+import org.fourthline.cling.model.meta.*;
+import org.fourthline.cling.model.types.*;
+import java.io.IOException;
 /**
  * Classe qui permet de lancer le serveur du Chronometre UPnP
  * @author creative Technology
@@ -73,22 +73,22 @@ public class ChronoServer implements Runnable {
          */
         DeviceIdentity identity =
                 new DeviceIdentity(
-                        UDN.uniqueSystemIdentifier("ChronoService")
+                        UDN.uniqueSystemIdentifier("Button")
                 );
 
         DeviceType type =
-                new UDADeviceType("TypeChrono", 1);
+                new UDADeviceType("Button", 1);
 
         DeviceDetails details =
                 new DeviceDetails(
-                        "Friendly ChronoService",					// Friendly Name
+                        "Chronometre",					// Friendly Name
                         new ManufacturerDetails(
                                 "CreaTech",								// Manufacturer
                                 ""),								// Manufacturer URL
                         new ModelDetails(
-                                "ChronoServiceTest",						// Model Name
-                                "Un composant qui permet de lancer, arreter et reinitialise un chronometre",	// Model Description
-                                "v2" 								// Model Number
+                                "ButtonTest",						// Model Name
+                                "A basic button.",	// Model Description
+                                "v1" 								// Model Number
                         )
                 );
 
