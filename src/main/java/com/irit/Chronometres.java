@@ -27,7 +27,7 @@ public final class Chronometres extends javax.swing.JFrame {
     private static LocalService<ChronoService> chronometreService;
 
     //emettre un evenement après un temps donné
-    @UpnpStateVariable(defaultValue = "event", sendEvents = false)
+   /* @UpnpStateVariable(defaultValue = "event", sendEvents = false)
     private boolean target = false;
 
     @UpnpStateVariable(defaultValue = "start")
@@ -46,16 +46,16 @@ public final class Chronometres extends javax.swing.JFrame {
     private final PropertyChangeSupport propertyChangeSupport;
     public ChronoService() {
         this.propertyChangeSupport = new PropertyChangeSupport(this);
-    }
+    }*/
     //fin de l'emission
 
     /**
      * Get propertyChangeSupport
      * @return PropertyChangeSupport
      */
-    public PropertyChangeSupport getPropertyChangeSupport() {
+   /* public PropertyChangeSupport getPropertyChangeSupport() {
         return propertyChangeSupport;
-    }
+    }*/
 
     public void activate(JButton... boutons) {
         for (JButton bout : boutons) {
