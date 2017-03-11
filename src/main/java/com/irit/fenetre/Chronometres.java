@@ -67,7 +67,8 @@ public final class Chronometres extends javax.swing.JFrame {
         this.chronometreService.getManager().getImplementation().getPropertyChangeSupport().addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
-                if(evt.getPropertyName().equals("CENTRE")){
+                if(evt.getPropertyName().equals("status")){
+                    
                     if(etatChronometre.equals(Etats.START)){
                         timer.stop();
                         etatChronometre = Etats.STOP;
