@@ -35,6 +35,7 @@ public class ChronoService {
     }
 
     //envoi un evenement à la lampe pour quelle s'eteigne
+    @UpnpAction
     public void envoyerTimeOut() {
         String oldStatus = status;
         status = "TIMEOUT";
