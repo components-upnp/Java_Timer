@@ -23,7 +23,7 @@ public final class Chronometres extends javax.swing.JFrame {
 
     private static int heure, minute, seconde;
     private final int delais = 1000;
-    private final int tempsMax = 30;
+    private final int tempsMax = 5;
     private static LocalService<ChronoService> chronometreService;
 
       public void activate(JButton... boutons) {
