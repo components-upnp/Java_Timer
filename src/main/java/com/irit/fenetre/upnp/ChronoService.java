@@ -36,8 +36,10 @@ public class ChronoService {
 
     //envoi un evenement à la lampe pour quelle s'eteigne
     public void envoyerTimeOut() {
-        System.out.println(status + "  "+target);
-        getPropertyChangeSupport().firePropertyChange("Target",status,"TIMEOUT");
+        String oldStatus = status;
+        status = "TIMEOUT";
+        System.out.println(oldStatus + "  "+status);
+        getPropertyChangeSupport().firePropertyChange("Target",oldStatus,status);
     }
 
     @UpnpStateVariable(defaultValue = "0", sendEvents = false)
