@@ -46,7 +46,7 @@ public class ChronoService {
     private String status = "0";
 
     @UpnpAction(name = "setStatus")
-    public void setStatus(@UpnpInputArgument(name = "NewTargetValue") String newStatatusValue){
+    public void setStatus(@UpnpInputArgument(name = "NewStatatusValue") String newStatatusValue){
         String oldStatus = status;
         status = newStatatusValue;
         target = status;
