@@ -88,8 +88,9 @@ public final class Chronometres extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent e) {
             seconde++;
             //si le chronometre atteind le temps maximal, il envoi un evenement à la lampe pour quelle s'eteinge
-            if(seconde == tempsMax) {
+            if(seconde >= tempsMax) {
                 timer.stop();
+                System.out.println("stop");
                 etatChronometre = Etats.STOP;
                 chronometreService.getManager().getImplementation().envoyerTimeOut();
             }
@@ -189,6 +190,12 @@ public final class Chronometres extends javax.swing.JFrame {
         } else if (boutonStart.getText().compareTo("Stop") == 0) {
             boutonStart.setText("Start");
             timer.stop();
+            if(seconde >= tempsMax) {
+                timer.stop();
+                System.out.println("stop");
+                etatChronometre = Etats.STOP;
+                chronometreService.getManager().getImplementation().envoyerTimeOut();
+            }
             activate(boutonStart);
             activate(boutonRemiseAZero);
         }
