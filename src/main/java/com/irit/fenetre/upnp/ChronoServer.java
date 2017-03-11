@@ -1,8 +1,9 @@
-package com.irit;
+package com.irit.fenetre.upnp;
 
 /**
  * Created by Abdourahamane Ly on 01/02/2017.
  */
+import com.irit.fenetre.Chronometres;
 import org.fourthline.cling.UpnpService;
 import org.fourthline.cling.UpnpServiceImpl;
 import org.fourthline.cling.binding.*;
@@ -17,20 +18,6 @@ import java.io.IOException;
  *
  */
 public class ChronoServer implements Runnable {
-    /**
-     * Main
-     * Copy code if you need to add a Upnp service on your device
-     * @param args
-     * @throws Exception
-     */
-
-    public static void main(String[] args) throws Exception {
-        // Start a user thread that runs the UPnP stack
-        Thread serverThread = new Thread(new ChronoServer());
-        serverThread.setDaemon(false);
-        serverThread.start();
-    }
-
     /**
      * Run the UPnP service
      */

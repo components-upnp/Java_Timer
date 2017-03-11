@@ -1,4 +1,4 @@
-package com.irit;
+package com.irit.fenetre.upnp;
 
 import org.fourthline.cling.binding.annotations.*;
 
@@ -45,7 +45,7 @@ public class ChronoService {
     private String status = "0";
 
     @UpnpAction(name = "setTarget")
-    public void setTarget(@UpnpInputArgument(name = "newTargetValue") String newTargetValue) {
+    public void setTarget(@UpnpInputArgument(name = "NewTargetValue") String newTargetValue) {
         String targetOldValue = target;
         String statusOldValue = status;
         status = newTargetValue;

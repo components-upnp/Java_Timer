@@ -3,19 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.irit;
+package com.irit.fenetre;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 import javax.swing.JButton;
 import javax.swing.Timer;
 
-import org.fourthline.cling.binding.annotations.UpnpAction;
-import org.fourthline.cling.binding.annotations.UpnpInputArgument;
-import org.fourthline.cling.binding.annotations.UpnpStateVariable;
+import com.irit.fenetre.upnp.ChronoService;
 import org.fourthline.cling.model.meta.LocalService;
 
 /**
@@ -62,7 +59,9 @@ public final class Chronometres extends javax.swing.JFrame {
         this.chronometreService.getManager().getImplementation().getPropertyChangeSupport().addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
-                //TODO
+                if(evt.getPropertyName().equals("status")){
+                    timer.start();
+                }
             }
         });
     }
