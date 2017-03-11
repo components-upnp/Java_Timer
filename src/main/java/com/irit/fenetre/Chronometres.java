@@ -23,7 +23,7 @@ public final class Chronometres extends javax.swing.JFrame {
 
     private static int heure, minute, seconde;
     private final int delais = 1000;
-    private final int tempsMax = 2;
+    private final int tempsMax = 30;
     private static LocalService<ChronoService> chronometreService;
 
       public void activate(JButton... boutons) {
@@ -68,7 +68,7 @@ public final class Chronometres extends javax.swing.JFrame {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
                 if(evt.getPropertyName().equals("status")){
-                    
+
                     if(etatChronometre.equals(Etats.START)){
                         timer.stop();
                         etatChronometre = Etats.STOP;
@@ -88,7 +88,7 @@ public final class Chronometres extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent e) {
             seconde++;
             //si le chronometre atteind le temps maximal, il envoi un evenement à la lampe pour quelle s'eteinge
-            if(heure == tempsMax) {
+            if(seconde == tempsMax) {
                 timer.stop();
                 etatChronometre = Etats.STOP;
                 chronometreService.getManager().getImplementation().envoyerTimeOut();
