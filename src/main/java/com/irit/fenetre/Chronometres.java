@@ -84,13 +84,13 @@ public final class Chronometres extends javax.swing.JFrame {
     public void afficherChrono() {
         labelHeure.setText(heure + ":" + minute + ":" + seconde);
     }
+
     private final Timer timer = new Timer(delais, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             seconde++;
             //si le chronometre atteind le temps maximal, il envoi un evenement à la lampe pour quelle s'eteinge
             if(seconde >= tempsMax) {
                 timer.stop();
-                System.out.println("stop");
                 etatChronometre = Etats.STOP;
                 chronometreService.getManager().getImplementation().setStatus("TIMEOUT");
             }
@@ -190,12 +190,6 @@ public final class Chronometres extends javax.swing.JFrame {
         } else if (boutonStart.getText().compareTo("Stop") == 0) {
             boutonStart.setText("Start");
             timer.stop();
-            if(seconde >= tempsMax) {
-                timer.stop();
-                System.out.println("stop");
-                etatChronometre = Etats.STOP;
-                chronometreService.getManager().getImplementation().setStatus("TIMEOUT");
-            }
             activate(boutonStart);
             activate(boutonRemiseAZero);
         }
@@ -209,8 +203,7 @@ public final class Chronometres extends javax.swing.JFrame {
             deactivate(boutonRemiseAZero);
             afficherChronometre();
         }
-    }//GEN-LAST:event_boutonRemiseAZeroActionPerformed
-
+    }
     /**
      * @param args the command line arguments
      */
