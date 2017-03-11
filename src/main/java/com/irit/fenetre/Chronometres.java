@@ -92,7 +92,7 @@ public final class Chronometres extends javax.swing.JFrame {
                 timer.stop();
                 System.out.println("stop");
                 etatChronometre = Etats.STOP;
-                chronometreService.getManager().getImplementation().envoyerTimeOut();
+                chronometreService.getManager().getImplementation().setStatus("TIMEOUT");
             }
 
             if (seconde == 60) {
@@ -194,7 +194,7 @@ public final class Chronometres extends javax.swing.JFrame {
                 timer.stop();
                 System.out.println("stop");
                 etatChronometre = Etats.STOP;
-                chronometreService.getManager().getImplementation().envoyerTimeOut();
+                chronometreService.getManager().getImplementation().setStatus("TIMEOUT");
             }
             activate(boutonStart);
             activate(boutonRemiseAZero);

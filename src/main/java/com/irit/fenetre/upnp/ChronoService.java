@@ -34,14 +34,6 @@ public class ChronoService {
         return propertyChangeSupport;
     }
 
-    //envoi un evenement à la lampe pour quelle s'eteigne
-    @UpnpAction
-    public void envoyerTimeOut() {
-        String oldStatus = status;
-        status = "TIMEOUT";
-        System.out.println(oldStatus + "  "+status);
-        getPropertyChangeSupport().firePropertyChange("Target",oldStatus,status);
-    }
 
     @UpnpStateVariable(defaultValue = "0", sendEvents = false)
     private String target = "0";
@@ -52,6 +44,14 @@ public class ChronoService {
      */
     @UpnpStateVariable(defaultValue = "0")
     private String status = "0";
+
+    @UpnpAction(name = "setStatus")
+    public void setStatus(@UpnpInputArgument(name = "NewTargetValue") String newStatatusValue){
+        String oldStatus = status;
+        status = newStatatusValue;
+        target = status;
+        getPropertyChangeSupport().firePropertyChange("Status", oldStatus, status);
+    }
 
     @UpnpAction(name = "setTarget")
     public void setTarget(@UpnpInputArgument(name = "NewTargetValue") String newTargetValue) {
