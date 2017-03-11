@@ -23,6 +23,7 @@ public final class Chronometres extends javax.swing.JFrame {
 
     private static int heure, minute, seconde;
     private final int delais = 1000;
+    private final int tempsMax = 2;
     private static LocalService<ChronoService> chronometreService;
 
       public void activate(JButton... boutons) {
@@ -30,6 +31,12 @@ public final class Chronometres extends javax.swing.JFrame {
             bout.setEnabled(true);
         }
     }
+
+    public enum Etats{
+          STOP, START
+    }
+
+    Etats etatChronometre;
 
     public void deactivate(JButton... boutons) {
         for (JButton bout : boutons) {
@@ -54,13 +61,20 @@ public final class Chronometres extends javax.swing.JFrame {
     public void initChronometre(LocalService<ChronoService> chronoService) {
         heure = minute = seconde = 0;
         activate(boutonStart);
+        etatChronometre = Etats.STOP;
         deactivate(boutonRemiseAZero);
         this.chronometreService = chronoService;
         this.chronometreService.getManager().getImplementation().getPropertyChangeSupport().addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
-                if(evt.getPropertyName().equals("status")){
-                    timer.start();
+                if(evt.getPropertyName().equals("CENTRE")){
+                    if(etatChronometre.equals(Etats.START)){
+                        timer.stop();
+                        etatChronometre = Etats.STOP;
+                    } else {
+                        timer.start();
+                        etatChronometre = Etats.START;
+                    }
                 }
             }
         });
@@ -72,6 +86,13 @@ public final class Chronometres extends javax.swing.JFrame {
     private final Timer timer = new Timer(delais, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             seconde++;
+            //si le chronometre atteind le temps maximal, il envoi un evenement à la lampe pour quelle s'eteinge
+            if(heure == tempsMax) {
+                timer.stop();
+                etatChronometre = Etats.STOP;
+                chronometreService.getManager().getImplementation().envoyerTimeOut();
+            }
+
             if (seconde == 60) {
                 seconde = 0;
                 minute++;
@@ -163,6 +184,7 @@ public final class Chronometres extends javax.swing.JFrame {
             activate(boutonStart); //il devient le bouton stop
             deactivate(boutonRemiseAZero);
             timer.start();
+            etatChronometre = Etats.START;
         } else if (boutonStart.getText().compareTo("Stop") == 0) {
             boutonStart.setText("Start");
             timer.stop();

@@ -34,6 +34,11 @@ public class ChronoService {
         return propertyChangeSupport;
     }
 
+    //envoi un evenement à la lampe pour quelle s'eteigne
+    public void envoyerTimeOut() {
+        getPropertyChangeSupport().firePropertyChange("Target",status,"TIMEOUT");
+    }
+
     @UpnpStateVariable(defaultValue = "0", sendEvents = false)
     private String target = "0";
 
