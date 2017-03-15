@@ -68,7 +68,7 @@ public class ChronoServer implements Runnable {
 
         DeviceDetails details =
                 new DeviceDetails(
-                        "FriendlyChronometre",					// Friendly Name
+                        "Timer",					// Friendly Name
                         new ManufacturerDetails(
                                 "CreaTech",								// Manufacturer
                                 ""),								// Manufacturer URL
